@@ -27,15 +27,25 @@ def check_matches(flavors, watched):
     """Check if any current flavors match watched keywords."""
     matches = []
     for watch in watched:
-        for keyword in watch["keywords"]:
+        # match_all: ALL terms must be present in the flavor name
+        if "match_all" in watch:
             for flavor in flavors:
-                if keyword.lower() in flavor.lower():
+                flavor_lower = flavor.lower()
+                if all(term.lower() in flavor_lower for term in watch["match_all"]):
                     matches.append({
                         "wanted": watch["name"],
-                        "found": flavor,
-                        "keyword": keyword
+                        "found": flavor
                     })
-                    break  # Found a match for this keyword, move on
+        # keywords: ANY keyword can match
+        elif "keywords" in watch:
+            for keyword in watch["keywords"]:
+                for flavor in flavors:
+                    if keyword.lower() in flavor.lower():
+                        matches.append({
+                            "wanted": watch["name"],
+                            "found": flavor
+                        })
+                        break
     # Dedupe by wanted flavor name
     seen = set()
     unique = []
