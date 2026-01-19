@@ -1,0 +1,28 @@
+name: Check Sweet Cow Flavors
+
+on:
+  schedule:
+    # Runs at noon Mountain Time (UTC-7 = 19:00 UTC, UTC-6 DST = 18:00 UTC)
+    # Using 18:00 UTC for MDT (summer) - adjust as needed
+    - cron: '0 18 * * *'
+  workflow_dispatch:  # Allows manual trigger for testing
+
+jobs:
+  check-flavors:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      
+      - name: Install dependencies
+        run: |
+          pip install requests beautifulsoup4
+      
+      - name: Run flavor check
+        run: python sweet_cow_alert.py
