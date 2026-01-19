@@ -1,17 +1,17 @@
 {
   "ntfy_topic": "sweetcow-stanley-mpe",
   "watched": [
-    {
-      "name": "lemon poppy",
-      "keywords": ["lemon poppy"]
-    },
+{
+  "name": "Lemon Poppy",
+  "match_all": ["Lemon", "muffin"]
+},
     {
       "name": "nerds",
       "keywords": ["nerds"]
     },
-    {
-      "name": "Peanut Butter brownie",
-      "keywords": ["peanut butter brownie"]
-    }
+{
+  "name": "Peanut Butter Brownie",
+  "match_all": ["peanut butter", "brownie"]
+}
   ]
 }
