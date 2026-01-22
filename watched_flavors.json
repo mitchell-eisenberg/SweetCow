@@ -5,10 +5,7 @@
   "name": "Lemon Poppy",
   "match_all": ["Lemon", "muffin"]
 },
-    {
-      "name": "nerds",
-      "keywords": ["nerds"]
-    },
+
 {
   "name": "Peanut Butter Brownie",
   "match_all": ["peanut butter", "brownie"]
